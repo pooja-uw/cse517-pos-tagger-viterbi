@@ -1,0 +1,30 @@
+Part 1: Set up your workspace.
+========================================================
+1. Navigate to your workspace.
+2. Run the following commands to download scala and sbt.
+wget https://downloads.lightbend.com/scala/2.12.2/scala-2.12.2.tgz
+tar -xvf scala-2.12.2.tgz
+wget https://github.com/sbt/sbt/releases/download/v0.13.15/sbt-0.13.15.tgz
+tar -xvf sbt-0.13.15.tgz
+3. Update the PATH with scala and sbt.
+Replace "WORKSPACE-PATH" in the following with the path to your workspace.
+export PATH=/WORKSPACE-PATH/scala-2.12.2/bin:/WORKSPACE-PATH/sbt/bin:$PATH
+
+
+Part 2: Running Bigram and Trigram HMM Taggers.
+========================================================
+1. Download A3.tgz from Canvas that contains twt.train.json, twt.test.json
+2. Untar A3.tgz
+3. Run the following command to start the Bigram and Trigram HMM Taggers
+For Trigram HMM Tagger:
+sbt "runMain TrigramHMMTagger /WORKSPACE-PATH/twt.train.json /WORKSPACE-PATH/twt.test.json"
+For Bigram HMM Tagger:
+sbt "runMain BigramHMMTagger /WORKSPACE-PATH/twt.train.json /WORKSPACE-PATH/twt.test.json"
+
+
+Part 3: Running the HMM Evaluation script.
+========================================================
+1. Locate the bigramHmm-TIMESTAMP.json or trigramHmm-TIMESTAMP.json that contains the labelled data.
+2. Run the following cmmand to start the HMM Evaluation script that generates the Confusion matrix.
+sbt "runMain HMMEvaluator /WORKSPACE-PATH/twt.test.json /WORKSPACE-PATH/bigramHmm-TIMESTAMP.json"
+3. This generates a CSV file named distribution-TIMESTAMP.csv
